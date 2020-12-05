@@ -7,6 +7,7 @@ import Container from "../../components/Container";
 
 import { Block, Card, Flex, Grid, GridItem, H3, InlineBlock, NeoInput } from "../../primitives";
 import Button from "../../components/Button/Button";
+import { useFormik } from "formik";
 
 function Test() {
   const [pokemon, setPokemon] = useState({});
@@ -20,64 +21,70 @@ function Test() {
     });
   }, []);
 
-  // useEffect(() => {
-  //   if (!xValue) return;
-  //   fromApi.getPokemonByNameOrId(+xValue).then((res) => {
-  //     setPokemon(res);
-  //     setFetchedData(true);
-  //   });
-  // }, [xValue]);
-
   const _handleChange = (event) => {
     setValue(event.target.value);
   };
 
-  const _searchPokemon = () => {
-    fromApi.getPokemonByNameOrId(+xValue).then((res) => {
-      setPokemon(res);
-      setFetchedData(true);
-    });
+  const _searchPokemon = (pokemonNumber) => {
+    console.log(pokemonNumber);
+    fromApi
+      .getPokemonByNameOrId(+pokemonNumber)
+      .then((res) => {
+        setPokemon(res);
+      })
+      .catch((err) => alert("no pokemon found"));
   };
 
-  return (
-    <>
-      <Main hideOverflow>
-        {/* <Container> */}
+  const formik = useFormik({
+    initialValues: {
+      pokemonNumber: 1,
+    },
+    onSubmit: (values) => {
+      const { pokemonNumber } = values;
+      _searchPokemon(pokemonNumber);
+    },
+  });
 
-        <Grid center>
-          <GridItem small="nine-tenths" large="one-third">
-            <Block top={5} bottom={5}>
-              <Card halfPadding>
-                <h5>PokéSearch</h5>
-              </Card>
-            </Block>
-            {pokemon && dataFetched && (
-              <Card minHeight="200px">
-                <Flex column align="center" justify="space-between" style={{ height: "100%" }}>
-                  <Image width="150px" height="150px" src={pokemon.sprites.front_default} />
-                  <div>
-                    <H3>{pokemon.name}</H3>
-                    <p>#{pokemon.id}</p>
-                  </div>
-                </Flex>
-              </Card>
-            )}
-            <Block top={5}>
-              <form>
-                <Flex justify="space-between">
-                  <NeoInput type="number" value={xValue} onChange={_handleChange} />
-                  <Button onClick={() => _searchPokemon()}>Search</Button>
-                </Flex>
-              </form>
-            </Block>
-            <Block top={4}>
-              <p>Wanna see them all in a lazy loading list? check out the pokedex!</p>
-            </Block>
-          </GridItem>
-        </Grid>
-        {/* </Container> */}
-      </Main>
-    </>
+  return (
+    <Main hideOverflow>
+      <Grid center>
+        <GridItem small="nine-tenths" large="one-third">
+          <Block top={5} bottom={5}>
+            <Card halfPadding>
+              <h5>PokéSearch</h5>
+            </Card>
+          </Block>
+          {pokemon && dataFetched && (
+            <Card minHeight="200px">
+              <Flex column align="center" justify="space-between" style={{ height: "100%" }}>
+                <Image width="150px" height="150px" src={pokemon.sprites.front_default} />
+                <div>
+                  <H3>{pokemon.name}</H3>
+                  <p>#{pokemon.id}</p>
+                </div>
+              </Flex>
+            </Card>
+          )}
+          <Block top={5}>
+            <form onSubmit={formik.handleSubmit}>
+              <Flex justify="space-between">
+                <NeoInput
+                  type="number"
+                  onChange={formik.handleChange}
+                  name="pokemonNumber"
+                  id="pokemonNumber"
+                  value={formik.values.pokemonNumber}
+                />
+                <Button type="submit">Search</Button>
+              </Flex>
+            </form>
+          </Block>
+          <Block top={4}>
+            <p>Wanna see them all in a lazy loading list? check out the pokedex!</p>
+          </Block>
+        </GridItem>
+      </Grid>
+    </Main>
   );
 }
 
