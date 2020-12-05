@@ -10,10 +10,9 @@ Styles.Button = styled.button`
   line-height: 42px;
 
   border-radius: 50px;
-  background: #cc0000;
-  box-shadow: 20px 20px 60px #ad0000, -20px -20px 60px #eb0000;
+  background: #ffffff;
+  box-shadow: 20px 20px 60px #d9d9d9, -20px -20px 60px #ffffff;
 
-  color: white;
   // font-family: ${variables.typography.fontFamily};
   font-weight: bold;
   // font-size: ${variables.fontSize.regular};

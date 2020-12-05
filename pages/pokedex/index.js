@@ -46,7 +46,7 @@ function Test() {
             return (
               <Block bottom={3}>
                 <Card minHeight="50px">
-                  <Image src="/images/722.png" alt="picture of pikachu" width={100} height={100} />
+                  <Image src="/images/722.png" alt="picture of pikachu" width={50} height={50} />
 
                   <p>{name}</p>
                 </Card>
