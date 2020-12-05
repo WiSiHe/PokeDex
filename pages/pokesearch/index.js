@@ -1,20 +1,11 @@
 import { useEffect, useState } from "react";
 import fromApi from "../api/fromApi";
-
-import Image from "../../components/Image";
+import Image from "next/image";
+// import Image from "../../components/Image";
 import Main from "../../components/Main";
 import Container from "../../components/Container";
 
-import {
-  Block,
-  Card,
-  Flex,
-  Grid,
-  GridItem,
-  H3,
-  InlineBlock,
-  NeoInput,
-} from "../../primitives";
+import { Block, Card, Flex, Grid, GridItem, H3, InlineBlock, NeoInput } from "../../primitives";
 import Button from "../../components/Button/Button";
 
 function Test() {
@@ -23,7 +14,7 @@ function Test() {
   const [dataFetched, setFetchedData] = useState(false);
 
   useEffect(() => {
-    fromApi.getPokemonByNameOrId(9).then((res) => {
+    fromApi.getPokemonByNameOrId(1).then((res) => {
       setPokemon(res);
       setFetchedData(true);
     });
@@ -62,13 +53,8 @@ function Test() {
             </Block>
             {pokemon && dataFetched && (
               <Card minHeight="200px">
-                <Flex
-                  column
-                  align="center"
-                  justify="space-between"
-                  style={{ height: "100%" }}
-                >
-                  <Image src={pokemon.sprites.front_default} />
+                <Flex column align="center" justify="space-between" style={{ height: "100%" }}>
+                  <Image width="150px" height="150px" src={pokemon.sprites.front_default} />
                   <div>
                     <H3>{pokemon.name}</H3>
                     <p>#{pokemon.id}</p>
@@ -79,14 +65,13 @@ function Test() {
             <Block top={5}>
               <form>
                 <Flex justify="space-between">
-                  <NeoInput
-                    type="text"
-                    value={xValue}
-                    onChange={_handleChange}
-                  />
+                  <NeoInput type="number" value={xValue} onChange={_handleChange} />
                   <Button onClick={() => _searchPokemon()}>Search</Button>
                 </Flex>
               </form>
+            </Block>
+            <Block top={4}>
+              <p>Wanna see them all in a lazy loading list? check out the pokedex!</p>
             </Block>
           </GridItem>
         </Grid>
