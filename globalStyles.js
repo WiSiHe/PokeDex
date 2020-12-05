@@ -45,7 +45,7 @@ const GlobalStyle = createGlobalStyle`
     vertical-align: baseline;
     font-family: "Ginto Normal", Helvetica, Arial;
     font-weight: normal;
-    background-color: white;
+    background-color: #CC0000;
   }
 
   /* Prevent scrolling when drawers open */

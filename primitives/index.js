@@ -18,6 +18,7 @@ import StatusBar from "./StatusBar";
 import StickyWrapper from "./StickyWrapper";
 import Text from "./Text";
 import Ul from "./Ul";
+import NeoInput from "./NeoInput";
 
 export {
   Block,
@@ -30,6 +31,7 @@ export {
   H1,
   H2,
   H3,
+  NeoInput,
   Hr,
   InlineBlock,
   Label,

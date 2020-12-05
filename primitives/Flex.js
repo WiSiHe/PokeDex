@@ -5,35 +5,40 @@ const Flex = styled.div`
   flex-direction: row;
 
   /* Full-width version */
-  ${props =>
-    props.full &&
+  ${(props) =>
+    props.fullWidth &&
     css`
       width: 100%;
     `};
-
+  /* Full-height version */
+  ${(props) =>
+    props.fullHeight &&
+    css`
+      height: 100%;
+    `};
   /* Align items settings */
-  ${props =>
+  ${(props) =>
     props.align &&
     css`
       align-items: ${props.align};
     `};
 
   /* Justify content settings */
-  ${props =>
+  ${(props) =>
     props.justify &&
     css`
       justify-content: ${props.justify};
     `};
 
   /* Justify content settings */
-  ${props =>
+  ${(props) =>
     props.column &&
     css`
       flex-direction: column;
     `};
 
   /* Wrap settings */
-  ${props =>
+  ${(props) =>
     props.wrap &&
     css`
       flex-wrap: wrap;

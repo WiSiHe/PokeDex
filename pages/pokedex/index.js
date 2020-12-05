@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import Container from "../../components/Container";
+import Main from "../../components/Main";
 import { isEmptyArray } from "../../utils/isEmptyUtils";
 import fromApi from "../api/fromApi";
 
@@ -26,22 +28,24 @@ function Test() {
   //     return tex.data;
   //   };
   return (
-    <div>
-      <h5>Pokédex</h5>
-      {pokemonList.slice(0, 5).map((pokemon) => {
-        const { name, url } = pokemon;
-        let infoData = {};
+    <Main hideOverflow>
+      <Container>
+        <h5>Pokédex</h5>
+        {pokemonList.slice(0, 5).map((pokemon) => {
+          const { name, url } = pokemon;
+          let infoData = {};
 
-        const info = fetch(url).then((response) => response.json());
-        //   .then((data) => (infoData = data));
-        console.log(info, infoData);
-        return (
-          <>
-            <p>{name}</p>
-          </>
-        );
-      })}
-    </div>
+          const info = fetch(url).then((response) => response.json());
+          //   .then((data) => (infoData = data));
+          console.log(info, infoData);
+          return (
+            <>
+              <p>{name}</p>
+            </>
+          );
+        })}
+      </Container>
+    </Main>
   );
 }
 

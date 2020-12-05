@@ -5,21 +5,23 @@ import variables from "../constants/variables";
 const Card = styled.div`
   background: #ffffff;
   border: 1px solid #e9e9e9;
+  border-radius: 4px;
   padding: ${variables.spacing[4]};
-
+  box-shadow: 0px 0px 59px 1px rgba(0, 0, 0, 0.17);
+  position: relative;
   @media ${variables.screen.medium} {
     padding: ${variables.spacing[7]};
   }
 
   /* Modifiers */
 
-  ${props =>
+  ${(props) =>
     props.noBorder &&
     css`
       border: 0;
     `};
 
-  ${props =>
+  ${(props) =>
     props.noBorderMobile &&
     css`
       @media ${variables.screen.mediumMax} {
@@ -27,19 +29,19 @@ const Card = styled.div`
       }
     `};
 
-  ${props =>
+  ${(props) =>
     props.relative &&
     css`
       position: relative;
     `};
 
-  ${props =>
+  ${(props) =>
     props.noPadding &&
     css`
       padding: 0 !important;
     `};
 
-  ${props =>
+  ${(props) =>
     props.noPaddingMobile &&
     css`
       @media ${variables.screen.mediumMax} {
@@ -47,7 +49,7 @@ const Card = styled.div`
       }
     `};
 
-  ${props =>
+  ${(props) =>
     props.halfPadding &&
     css`
       padding: ${variables.spacing[4]};
@@ -57,12 +59,11 @@ const Card = styled.div`
       }
     `};
 
-  ${props =>
+  ${(props) =>
     props.minHeight &&
     css`
-      @media ${variables.screen.medium} {
-        min-height: ${props.minHeight};
-      }
+      heigth: 1px;
+      min-height: ${props.minHeight};
     `};
 `;
 

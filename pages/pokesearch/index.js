@@ -1,7 +1,21 @@
 import { useEffect, useState } from "react";
 import fromApi from "../api/fromApi";
 
-import { Card } from "../../primitives";
+import Image from "../../components/Image";
+import Main from "../../components/Main";
+import Container from "../../components/Container";
+
+import {
+  Block,
+  Card,
+  Flex,
+  Grid,
+  GridItem,
+  H3,
+  InlineBlock,
+  NeoInput,
+} from "../../primitives";
+import Button from "../../components/Button/Button";
 
 function Test() {
   const [pokemon, setPokemon] = useState({});
@@ -15,41 +29,70 @@ function Test() {
     });
   }, []);
 
-  useEffect(() => {
-    if (!xValue) return;
-    fromApi.getPokemonByNameOrId(+xValue).then((res) => {
-      setPokemon(res);
-      setFetchedData(true);
-    });
-  }, [xValue]);
+  // useEffect(() => {
+  //   if (!xValue) return;
+  //   fromApi.getPokemonByNameOrId(+xValue).then((res) => {
+  //     setPokemon(res);
+  //     setFetchedData(true);
+  //   });
+  // }, [xValue]);
 
   const _handleChange = (event) => {
     setValue(event.target.value);
   };
 
-  const _handleSubmit = (event) => {
-    event.preventDefault();
+  const _searchPokemon = () => {
+    fromApi.getPokemonByNameOrId(+xValue).then((res) => {
+      setPokemon(res);
+      setFetchedData(true);
+    });
   };
 
-  const imageUrl = "pokemon.sprites.front_default";
   return (
-    <div>
-      <h5>Pokédex</h5>
-      {pokemon && dataFetched && (
-        <Card>
-          <img src={pokemon.sprites.other.dream_world.front_default} />
-          <p>{pokemon.name}</p>
-          <p>{pokemon.id}</p>
-        </Card>
-      )}
-      <form onSubmit={_handleSubmit}>
-        <label>
-          Name:
-          <input type="text" value={xValue} onChange={_handleChange} />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
-    </div>
+    <>
+      <Main hideOverflow>
+        {/* <Container> */}
+
+        <Grid center>
+          <GridItem small="nine-tenths" large="one-third">
+            <Block top={5} bottom={5}>
+              <Card halfPadding>
+                <h5>PokéSearch</h5>
+              </Card>
+            </Block>
+            {pokemon && dataFetched && (
+              <Card minHeight="200px">
+                <Flex
+                  column
+                  align="center"
+                  justify="space-between"
+                  style={{ height: "100%" }}
+                >
+                  <Image src={pokemon.sprites.front_default} />
+                  <div>
+                    <H3>{pokemon.name}</H3>
+                    <p>#{pokemon.id}</p>
+                  </div>
+                </Flex>
+              </Card>
+            )}
+            <Block top={5}>
+              <form>
+                <Flex justify="space-between">
+                  <NeoInput
+                    type="text"
+                    value={xValue}
+                    onChange={_handleChange}
+                  />
+                  <Button onClick={() => _searchPokemon()}>Search</Button>
+                </Flex>
+              </form>
+            </Block>
+          </GridItem>
+        </Grid>
+        {/* </Container> */}
+      </Main>
+    </>
   );
 }
 
