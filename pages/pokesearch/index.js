@@ -16,7 +16,7 @@ function Test() {
   const [dataFetched, setFetchedData] = useState(false);
 
   const { name = "", id = "", weight = "", height = "", types = [] } = pokemon;
-  console.log("pokemon", pokemon);
+  // console.log("pokemon", pokemon);
 
   useEffect(() => {
     fromApi.getPokemonByNameOrId(1).then((res) => {
