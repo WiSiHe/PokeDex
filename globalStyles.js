@@ -5,20 +5,20 @@ import variables from "./constants/variables";
 /* Global styles */
 
 const GlobalStyle = createGlobalStyle`
-  @font-face {
-    font-family: "Ginto Normal";
-    src: local("Ginto Normal"), url("/fonts/GintoNormal-Regular.woff") format("woff");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: "Ginto Normal";
-    src: local("Ginto Normal"), url("/fonts/GintoNormal-Thin.woff") format("woff");
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
-  }
+  // @font-face {
+  //   font-family: "Ginto Normal";
+  //   src: local("Ginto Normal"), url("/fonts/GintoNormal-Regular.woff") format("woff");
+  //   font-weight: normal;
+  //   font-style: normal;
+  //   font-display: swap;
+  // }
+  // @font-face {
+  //   font-family: "Ginto Normal";
+  //   src: local("Ginto Normal"), url("/fonts/GintoNormal-Thin.woff") format("woff");
+  //   font-weight: 300;
+  //   font-style: normal;
+  //   font-display: swap;
+  // }
   @font-face {
     font-family: "High Tide";
     src: local("High Tide"), url("/fonts/HighTide-Regular.woff") format("woff");

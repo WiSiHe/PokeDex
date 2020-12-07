@@ -8,23 +8,31 @@ import { Flex, InlineBlock } from "../../primitives";
 
 const NavigationHeader = () => {
   const router = useRouter();
+  const { route = "" } = router;
+
   return (
     <Styles.Wrapper>
       <Flex justify="center" align="center" fullHeight>
-        <InlineBlock right={2}>
-          <FakeLink noUnderline onClick={() => router.push("/")}>
-            home
-          </FakeLink>
+        <InlineBlock right={4}>
+          <Styles.Link active={route === "/"}>
+            <FakeLink noUnderline onClick={() => router.push("/")}>
+              home
+            </FakeLink>
+          </Styles.Link>
         </InlineBlock>
         <InlineBlock>
-          <FakeLink noUnderline onClick={() => router.push("/pokedex")}>
-            pokedex
-          </FakeLink>
+          <Styles.Link active={route === "/pokedex"}>
+            <FakeLink noUnderline onClick={() => router.push("/pokedex")}>
+              pokedex
+            </FakeLink>
+          </Styles.Link>
         </InlineBlock>
-        <InlineBlock left={2}>
-          <FakeLink noUnderline onClick={() => router.push("/pokesearch")}>
-            pokesearch
-          </FakeLink>
+        <InlineBlock left={4}>
+          <Styles.Link active={route === "/pokesearch"}>
+            <FakeLink white noUnderline onClick={() => router.push("/pokesearch")}>
+              pokesearch
+            </FakeLink>
+          </Styles.Link>
         </InlineBlock>
       </Flex>
     </Styles.Wrapper>

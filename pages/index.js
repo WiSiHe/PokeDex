@@ -9,30 +9,31 @@ import styles from "../styles/Home.module.css";
 export default function Home() {
   const router = useRouter();
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    // <div className={styles.container}>
+    //   <Head>
+    //     <title>Next App</title>
+    //     <link rel="icon" href="/favicon.ico" />
+    //   </Head>
 
-      <Main>
-        <Grid center>
-          <GridItem base="nine-tenths">
+    <Main>
+      <Grid center>
+        <GridItem base="nine-tenths">
+          <Block top={5}>
             <Card>
               <p>
                 heya this is my frontpage, i'm not sure what content there will be here just yet, we
                 shall seeeee
               </p>
             </Card>
-
-            <Block top={2}>
-              <div style={{ width: "100%" }}>
-                <Image src="/images/pikachu.png" width={500} height={500} />
-              </div>
-            </Block>
-          </GridItem>
-        </Grid>
-      </Main>
-    </div>
+          </Block>
+          <Block top={2}>
+            <div style={{ width: "100%" }}>
+              <Image src="/images/pikachu.png" width={500} height={500} />
+            </div>
+          </Block>
+        </GridItem>
+      </Grid>
+    </Main>
+    // </div>
   );
 }

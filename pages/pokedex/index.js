@@ -6,8 +6,9 @@ import { Block, Card, Grid, GridItem } from "../../primitives";
 import { isEmptyArray } from "../../utils/isEmptyUtils";
 import fromApi from "../api/fromApi";
 import PokemonCard from "../../components/PokemonCard";
+import GenerationPicker from "../../components/GenerationPicker/GenerationPicker";
 
-function Test() {
+function PokeDex() {
   const [pokemonList, setPokemonList] = useState([]);
 
   useEffect(() => {
@@ -21,21 +22,29 @@ function Test() {
   return (
     <Main hideOverflow>
       <Grid center>
-        <GridItem small="nine-tenths" large="one-third">
+        <GridItem small="nine-tenths" large="one-half">
           <h5>Pokédex</h5>
-          {pokemonList.map((pokemon) => {
-            const { name, url } = pokemon;
+          <Block bottom={5}>
+            <GenerationPicker />
+            <p>Implement select gen later</p>
+          </Block>
+          <Grid center>
+            {pokemonList.map((pokemon) => {
+              const { name, url } = pokemon;
 
-            return (
-              <Block bottom={7}>
-                <PokemonCard pokemonName={name} pokemonUrl={url} />
-              </Block>
-            );
-          })}
+              return (
+                <GridItem base="one-half" large="one-third">
+                  <Block bottom={7}>
+                    <PokemonCard pokemonName={name} pokemonUrl={url} />
+                  </Block>
+                </GridItem>
+              );
+            })}
+          </Grid>
         </GridItem>
       </Grid>
     </Main>
   );
 }
 
-export default Test;
+export default PokeDex;
