@@ -9,9 +9,9 @@ const Card = styled.div`
   padding: ${variables.spacing[4]};
   box-shadow: 0px 0px 59px 1px rgba(0, 0, 0, 0.17);
   position: relative;
-  @media ${variables.screen.medium} {
-    padding: ${variables.spacing[7]};
-  }
+  // @media ${variables.screen.medium} {
+  //   padding: ${variables.spacing[7]};
+  // }
 
   /* Modifiers */
 
@@ -19,6 +19,12 @@ const Card = styled.div`
     props.noBorder &&
     css`
       border: 0;
+    `};
+
+  ${(props) =>
+    props.fullWidth &&
+    css`
+      width: 100%;
     `};
 
   ${(props) =>

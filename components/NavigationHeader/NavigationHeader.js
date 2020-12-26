@@ -14,24 +14,18 @@ const NavigationHeader = () => {
     <Styles.Wrapper>
       <Flex justify="center" align="center" fullHeight>
         <InlineBlock right={4}>
-          <Styles.Link active={route === "/"}>
-            <FakeLink noUnderline onClick={() => router.push("/")}>
-              home
-            </FakeLink>
+          <Styles.Link active={route === "/"} onClick={() => router.push("/")}>
+            home
           </Styles.Link>
         </InlineBlock>
         <InlineBlock>
-          <Styles.Link active={route === "/pokedex"}>
-            <FakeLink noUnderline onClick={() => router.push("/pokedex")}>
-              pokedex
-            </FakeLink>
+          <Styles.Link active={route === "/pokedex"} onClick={() => router.push("/pokedex")}>
+            Pokedex
           </Styles.Link>
         </InlineBlock>
         <InlineBlock left={4}>
-          <Styles.Link active={route === "/pokesearch"}>
-            <FakeLink white noUnderline onClick={() => router.push("/pokesearch")}>
-              pokesearch
-            </FakeLink>
+          <Styles.Link active={route === "/pokesearch"} onClick={() => router.push("/pokesearch")}>
+            Pokesearch
           </Styles.Link>
         </InlineBlock>
       </Flex>
@@ -41,7 +35,7 @@ const NavigationHeader = () => {
 
 NavigationHeader.propTypes = {
   hideOverflow: PropTypes.bool,
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
 };
 
 export default NavigationHeader;

@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import variables from "../constants/variables";
 
 const Flex = styled.div`
   display: flex;
@@ -42,6 +43,16 @@ const Flex = styled.div`
     props.wrap &&
     css`
       flex-wrap: wrap;
+    `};
+
+  ${(props) =>
+    props.responsive &&
+    css`
+      flex-direction: column;
+
+      @media ${variables.screen.medium} {
+        flex-direction: row;
+      }
     `};
 `;
 

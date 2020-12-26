@@ -16,9 +16,11 @@ import config from "../constants/variables";
 const { spacing, screen } = config;
 
 const Block = styled.div`
+  position: relative;
+  display: block;
   /* Left margin */
 
-  ${props =>
+  ${(props) =>
     props.leftMobile &&
     css`
       @media ${screen.mediumMax} {
@@ -27,7 +29,7 @@ const Block = styled.div`
     `};
 
   /* Right margin */
-  ${props =>
+  ${(props) =>
     props.rightMobile &&
     css`
       @media ${screen.mediumMax} {
@@ -36,7 +38,7 @@ const Block = styled.div`
     `};
 
   /* Top padding */
-  ${props =>
+  ${(props) =>
     props.topMobile &&
     css`
       @media ${screen.mediumMax} {
@@ -45,7 +47,7 @@ const Block = styled.div`
     `};
 
   /* Bottom padding */
-  ${props =>
+  ${(props) =>
     props.bottomMobile &&
     css`
       @media ${screen.mediumMax} {
@@ -53,49 +55,49 @@ const Block = styled.div`
       }
     `};
 
-  ${props =>
+  ${(props) =>
     props.left &&
     css`
       margin-left: ${spacing[props.left]};
     `};
 
   /* Right margin */
-  ${props =>
+  ${(props) =>
     props.right &&
     css`
       margin-right: ${spacing[props.right]};
     `};
 
   /* Top padding */
-  ${props =>
+  ${(props) =>
     props.top &&
     css`
       margin-top: ${spacing[props.top]};
     `};
 
   /* Bottom padding */
-  ${props =>
+  ${(props) =>
     props.bottom &&
     css`
       margin-bottom: ${spacing[props.bottom]};
     `};
 
   /* Text align settings */
-  ${props =>
+  ${(props) =>
     props.align &&
     css`
       text-align: ${props.align};
     `};
 
   /* Width override */
-  ${props =>
+  ${(props) =>
     props.full &&
     css`
       width: 100%;
     `};
 
   /* Width override */
-  ${props =>
+  ${(props) =>
     props.hideOverflow &&
     css`
       overflow: hidden;
@@ -106,7 +108,7 @@ const Block = styled.div`
    */
 
   /* Small hide */
-  ${props =>
+  ${(props) =>
     props.smallHide &&
     css`
       @media ${screen.small} {
@@ -115,7 +117,7 @@ const Block = styled.div`
     `};
 
   /* Medium hide */
-  ${props =>
+  ${(props) =>
     props.mediumHide &&
     css`
       @media ${screen.medium} {
@@ -124,7 +126,7 @@ const Block = styled.div`
     `};
 
   /* Large hide */
-  ${props =>
+  ${(props) =>
     props.largeHide &&
     css`
       @media ${screen.large} {
@@ -132,7 +134,7 @@ const Block = styled.div`
       }
     `};
 
-  ${props =>
+  ${(props) =>
     props.baseShow &&
     css`
       display: none;
@@ -143,7 +145,7 @@ const Block = styled.div`
     `};
 
   /* Small push */
-  ${props =>
+  ${(props) =>
     props.smallShow &&
     css`
       display: none;
@@ -153,7 +155,7 @@ const Block = styled.div`
     `};
 
   /* Medium push */
-  ${props =>
+  ${(props) =>
     props.mediumShow &&
     css`
       display: none;
@@ -163,7 +165,7 @@ const Block = styled.div`
     `};
 
   /* Large push */
-  ${props =>
+  ${(props) =>
     props.largeShow &&
     css`
       display: none;
@@ -173,7 +175,7 @@ const Block = styled.div`
     `};
 
   /* Flex behaviour */
-  ${props =>
+  ${(props) =>
     props.flex &&
     css`
       flex: ${props.flex};

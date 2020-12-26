@@ -6,24 +6,26 @@ import getWidth from "../helpers/getWidth";
 const GridItem = styled.div`
   display: inline-block;
   width: 100%;
-  padding-left: ${variables.spacing[2]};
+  padding: ${variables.spacing[2]};
   vertical-align: top;
-  box-sizing: border-box;
+  box-sizing: border-box; 
   position: relative;
+  
+  // overflow: hidden;
 
-  @media ${variables.screen.medium} {
-    padding-left: ${variables.spacing[4]};
-  }
+  // @media ${variables.screen.medium} {
+  //   padding-left: ${variables.spacing[4]};
+  // }
 
-  @media ${variables.screen.large} {
-    padding-left: ${variables.spacing[5]};
-  }
+  // @media ${variables.screen.large} {
+  //   padding-left: ${variables.spacing[5]};
+  // }
 
   /*
    * Custom gutters
    */
 
-  ${props =>
+  ${(props) =>
     props.gutter === "small" &&
     css`
       @media ${variables.screen.medium} {
@@ -31,7 +33,7 @@ const GridItem = styled.div`
       }
     `}
 
-  ${props =>
+  ${(props) =>
     props.gutter === "medium" &&
     css`
       @media ${variables.screen.medium} {
@@ -39,7 +41,7 @@ const GridItem = styled.div`
       }
     `}
 
-  ${props =>
+  ${(props) =>
     props.gutter === "large" &&
     css`
       @media ${variables.screen.medium} {
@@ -47,7 +49,7 @@ const GridItem = styled.div`
       }
     `}
 
-    ${props =>
+    ${(props) =>
       props.gutterMobile === "small" &&
       css`
         @media ${variables.screen.base} {
@@ -55,7 +57,7 @@ const GridItem = styled.div`
         }
       `}
   
-    ${props =>
+    ${(props) =>
       props.gutterMobile === "medium" &&
       css`
         @media ${variables.screen.base} {
@@ -63,7 +65,7 @@ const GridItem = styled.div`
         }
       `}
   
-    ${props =>
+    ${(props) =>
       props.gutterMobile === "large" &&
       css`
         @media ${variables.screen.base} {
@@ -76,14 +78,14 @@ const GridItem = styled.div`
    */
 
   /* Base width */
-  ${props =>
+  ${(props) =>
     props.base &&
     css`
       width: ${getWidth(props.base)};
     `};
 
   /* Small width */
-  ${props =>
+  ${(props) =>
     props.small &&
     css`
       @media ${variables.screen.small} {
@@ -92,7 +94,7 @@ const GridItem = styled.div`
     `};
 
   /* Medium width */
-  ${props =>
+  ${(props) =>
     props.medium &&
     css`
       @media ${variables.screen.medium} {
@@ -101,7 +103,7 @@ const GridItem = styled.div`
     `};
 
   /* Large width */
-  ${props =>
+  ${(props) =>
     props.large &&
     css`
       @media ${variables.screen.large} {
@@ -114,7 +116,7 @@ const GridItem = styled.div`
    */
 
   /* Base push */
-  ${props =>
+  ${(props) =>
     props.basePush &&
     css`
       position: relative;
@@ -122,7 +124,7 @@ const GridItem = styled.div`
     `};
 
   /* Small push */
-  ${props =>
+  ${(props) =>
     props.smallPush &&
     css`
       @media ${variables.screen.small} {
@@ -132,7 +134,7 @@ const GridItem = styled.div`
     `};
 
   /* Medium push */
-  ${props =>
+  ${(props) =>
     props.mediumPush &&
     css`
       @media ${variables.screen.medium} {
@@ -142,7 +144,7 @@ const GridItem = styled.div`
     `};
 
   /* Large push */
-  ${props =>
+  ${(props) =>
     props.largePush &&
     css`
       @media ${variables.screen.large} {
@@ -156,7 +158,7 @@ const GridItem = styled.div`
    */
 
   /* Small hide */
-  ${props =>
+  ${(props) =>
     props.smallHide &&
     css`
       @media ${variables.screen.small} {
@@ -165,7 +167,7 @@ const GridItem = styled.div`
     `};
 
   /* Medium hide */
-  ${props =>
+  ${(props) =>
     props.mediumHide &&
     css`
       @media ${variables.screen.medium} {
@@ -174,7 +176,7 @@ const GridItem = styled.div`
     `};
 
   /* Large hide */
-  ${props =>
+  ${(props) =>
     props.largeHide &&
     css`
       @media ${variables.screen.large} {
@@ -182,7 +184,7 @@ const GridItem = styled.div`
       }
     `};
 
-  ${props =>
+  ${(props) =>
     props.baseShow &&
     css`
       display: none;
@@ -193,7 +195,7 @@ const GridItem = styled.div`
     `};
 
   /* Small push */
-  ${props =>
+  ${(props) =>
     props.smallShow &&
     css`
       display: none;
@@ -203,7 +205,7 @@ const GridItem = styled.div`
     `};
 
   /* Medium push */
-  ${props =>
+  ${(props) =>
     props.mediumShow &&
     css`
       display: none;
@@ -213,7 +215,7 @@ const GridItem = styled.div`
     `};
 
   /* Large push */
-  ${props =>
+  ${(props) =>
     props.largeShow &&
     css`
       display: none;

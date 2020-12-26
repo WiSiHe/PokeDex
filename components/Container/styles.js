@@ -28,15 +28,16 @@ const imageRightAnim = keyframes`
 
 Styles.Outer = styled.div`
   width: 100%;
-  padding: 0 ${variables.spacing[4]};
+  
+  // padding: 0 ${variables.spacing[4]};
 
-  @media ${variables.screen.medium} {
-    padding: 0 ${variables.spacing[6]};
-  }
+  // @media ${variables.screen.medium} {
+  //   padding: 0 ${variables.spacing[6]};
+  // }
 
-  @media ${variables.screen.large} {
-    padding: 0 ${variables.spacing[7]};
-  }
+  // @media ${variables.screen.large} {
+  //   padding: 0 ${variables.spacing[7]};
+  // }
 
   /* Modifiers */
   ${(props) =>
@@ -89,9 +90,21 @@ Styles.Outer = styled.div`
 
 Styles.Inner = styled.div`
   position: relative;
-  width: 100%;
+  display: block;
+
+
   max-width: ${variables.general.maxContentWidth};
+
   margin: 0 auto;
+  padding: 0 ${variables.spacing[4]};
+
+  // @media ${variables.screen.medium} {
+  //   padding: 0 ${variables.spacing[6]};
+  // }
+
+  // @media ${variables.screen.large} {
+  //   padding: 0 ${variables.spacing[7]};
+  // }
 
   ${(props) =>
     props.maxWidth === "narrow" &&

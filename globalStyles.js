@@ -5,26 +5,6 @@ import variables from "./constants/variables";
 /* Global styles */
 
 const GlobalStyle = createGlobalStyle`
-  // @font-face {
-  //   font-family: "Ginto Normal";
-  //   src: local("Ginto Normal"), url("/fonts/GintoNormal-Regular.woff") format("woff");
-  //   font-weight: normal;
-  //   font-style: normal;
-  //   font-display: swap;
-  // }
-  // @font-face {
-  //   font-family: "Ginto Normal";
-  //   src: local("Ginto Normal"), url("/fonts/GintoNormal-Thin.woff") format("woff");
-  //   font-weight: 300;
-  //   font-style: normal;
-  //   font-display: swap;
-  // }
-  @font-face {
-    font-family: "High Tide";
-    src: local("High Tide"), url("/fonts/HighTide-Regular.woff") format("woff");
-    font-style: normal;
-    font-display: swap;
-  }
 
   html {
     margin: 0;
@@ -36,6 +16,17 @@ const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
   }
 
+  ::-webkit-scrollbar {
+    width: 12px;
+    opacity: 0.1;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #cc0000;
+    border-radius: 15px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    opacity: 0.9;
+  }
 
 
   body {

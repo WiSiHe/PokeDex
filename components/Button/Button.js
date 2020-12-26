@@ -15,6 +15,7 @@ const Button = ({
   type,
   label,
   basketCount,
+  active,
   ...props
 }) => {
   const ariaProps = {};
@@ -38,6 +39,7 @@ const Button = ({
       faded={disabled}
       disabled={disabled || loading}
       onClick={onClick}
+      active={active}
       {...ariaProps}
       {...props}
     >

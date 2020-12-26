@@ -18,12 +18,17 @@ Styles.Link = styled.div`
   color: black;
   padding: 16px;
   border-radius: 5px;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.2;
+  }
 
   ${(props) =>
     props.active &&
     css`
       background-color: #cc0000;
-      // color: #cc0000;
+      color: white;
     `}
 `;
 

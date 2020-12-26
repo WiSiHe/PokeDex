@@ -32,6 +32,9 @@ const PokemonCard = ({ pokemonName, pokemonUrl }) => {
 
   const style = useSpring({
     display: "inline-block",
+    position: "relative",
+    width: "100%",
+    zIndex: isBooped ? "4" : "3",
     transform: isBooped
       ? `translate(${x}px, ${y}px)
          rotate(${rotation}deg)
@@ -54,23 +57,30 @@ const PokemonCard = ({ pokemonName, pokemonUrl }) => {
     sprites: { front_default = "" } = {},
   } = pokemonData;
 
-  if (isEmptyObject(pokemonData)) return <>null</>;
+  if (isEmptyObject(pokemonData)) return null;
 
   return (
-    <animated.span style={style}>
+    <animated.div style={style}>
       <Card minHeight="200px" onClick={() => setIsBooped(!isBooped)}>
-        <Flex column align="center" justify="space-between" style={{ height: "100%" }}>
+        <Flex
+          column
+          align="center"
+          justify="space-between"
+          style={{ height: "100%", width: "100%" }}
+        >
           <Image width="150px" height="150px" src={front_default} />
           <div>
-            <H3>{name}</H3>
+            <Block bottom={4}>
+              <H3>{name}</H3>
+            </Block>
             <div style={{ position: "absolute", left: "8px", top: "8px" }}>
               <p>#{id}</p>
             </div>
             <Flex>
-              {types.map((t) => {
+              {types.map((t, i) => {
                 const { name } = t.type;
                 return (
-                  <Block right={2}>
+                  <Block right={2} key={i + 1000}>
                     <Tag>{name}</Tag>
                   </Block>
                 );
@@ -90,7 +100,7 @@ const PokemonCard = ({ pokemonName, pokemonUrl }) => {
           </div>
         </Flex>
       </Card>
-    </animated.span>
+    </animated.div>
   );
 };
 

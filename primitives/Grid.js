@@ -6,18 +6,19 @@ const Grid = styled.div`
   list-style: none;
   margin: 0;
   padding: 0;
-  margin-left: -${variables.spacing[2]};
+  // margin-left: -${variables.spacing[2]};
 
-  @media ${variables.screen.medium} {
-    margin-left: -${variables.spacing[4]};
-  }
+  // @media ${variables.screen.medium} {
+  //   margin-left: -${variables.spacing[4]};
+  // }
 
-  @media ${variables.screen.large} {
-    margin-left: -${variables.spacing[5]};
-  }
+  // @media ${variables.screen.large} {
+  //   margin-left: -${variables.spacing[5]};
+  // }
+  // overflow: hidden;
 
   /* Reversed version */
-  ${props =>
+  ${(props) =>
     props.rev &&
     css`
       direction: rtl;
@@ -29,7 +30,7 @@ const Grid = styled.div`
       }
     `};
 
-  ${props =>
+  ${(props) =>
     props.revMobile &&
     css`
       @media ${variables.screen.mediumMax} {
@@ -39,7 +40,7 @@ const Grid = styled.div`
     `}
 
   /* Full version */
-  ${props =>
+  ${(props) =>
     props.full &&
     css`
       margin-left: 0;
@@ -50,7 +51,7 @@ const Grid = styled.div`
     `};
 
   /* Vertical align: middle version */
-  ${props =>
+  ${(props) =>
     props.middle &&
     css`
       > * {
@@ -59,7 +60,7 @@ const Grid = styled.div`
     `};
 
   /* Vertical align: bottom version */
-  ${props =>
+  ${(props) =>
     props.bottom &&
     css`
       > * {
@@ -68,7 +69,7 @@ const Grid = styled.div`
     `};
 
   /* Centered version */
-  ${props =>
+  ${(props) =>
     props.center &&
     css`
       text-align: center;
@@ -79,14 +80,14 @@ const Grid = styled.div`
     `};
 
   /* full height */
-  ${props =>
+  ${(props) =>
     props.fullHeight &&
     css`
       height: 100%;
     `};
 
   /* full width */
-  ${props =>
+  ${(props) =>
     props.fullWidth &&
     css`
       width: 100%;

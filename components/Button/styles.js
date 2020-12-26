@@ -44,6 +44,14 @@ Styles.Button = styled.button`
       border-color: ${variables.colors.disabledBg};
       color: ${variables.colors.disabledFg};
     `}
+
+    ${(props) =>
+      props.active &&
+      css`
+        background: #cc0000;
+
+        color: ${variables.colors.white};
+      `}
     
   ${(props) =>
     props.full &&

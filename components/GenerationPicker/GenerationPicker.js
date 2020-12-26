@@ -4,11 +4,11 @@ import PropTypes from "prop-types";
 import Styles from "./styles";
 import FakeLink from "../FakeLink/FakeLink";
 import { useRouter } from "next/router";
-import { Block, Flex, Grid, GridItem, InlineBlock } from "../../primitives";
+import { Block, Flex } from "../../primitives";
 import Button from "../Button/Button";
 import { animated, useSpring } from "react-spring";
 
-const GenerationPicker = () => {
+const GenerationPicker = ({ selectedGeneration, selectGeneration }) => {
   const x = 0;
   const y = 0;
   const rotation = 0;
@@ -31,30 +31,45 @@ const GenerationPicker = () => {
       friction: 10,
     },
   });
-  console.log(isBooped);
+
+  const _setActiveGeneration = (generation = "") => {
+    setIsBooped(!isBooped);
+    selectGeneration(generation);
+  };
+
   return (
     <>
       <Flex>
-        <Block right={4}>
-          <animated.span style={style}>
-            <Button onClick={() => setIsBooped(!isBooped)}>Gen 1</Button>
-          </animated.span>
+        <Block right={2}>
+          {/* <animated.span style={style}> */}
+          <Button active={selectedGeneration === "1"} onClick={() => _setActiveGeneration("1")}>
+            Gen 1
+          </Button>
+          {/* </animated.span> */}
         </Block>
-        <Block right={4}>
-          <Button>Gen 2</Button>
+        <Block right={2}>
+          {/* <animated.span style={style}> */}
+          <Button active={selectedGeneration === "2"} onClick={() => selectGeneration("2")}>
+            Gen 2
+          </Button>
+          {/* </animated.span> */}
         </Block>
-        <Block right={4}>
-          <Button>Gen 3</Button>
+        <Block right={2}>
+          <Button active={selectedGeneration === "3"} onClick={() => selectGeneration("3")}>
+            Gen 3
+          </Button>
         </Block>
-        <Button>Gen 4</Button>
+        <Button active={selectedGeneration === "4"} onClick={() => selectGeneration("4")}>
+          Gen 4
+        </Button>
       </Flex>
     </>
   );
 };
 
 GenerationPicker.propTypes = {
-  hideOverflow: PropTypes.bool,
-  children: PropTypes.node.isRequired,
+  // children: PropTypes.node.isRequired,
+  selectedGeneration: PropTypes.string,
 };
 
 export default GenerationPicker;

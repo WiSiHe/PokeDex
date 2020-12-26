@@ -1,22 +1,25 @@
 import { useEffect, useState } from "react";
 import fromApi from "../api/fromApi";
 import Image from "next/image";
-// import Image from "../../components/Image";
+
 import Main from "../../components/Main";
 import Container from "../../components/Container";
 
-import { Block, Card, Flex, Grid, GridItem, H2, H3, InlineBlock, NeoInput } from "../../primitives";
+import { Block, Card, Flex, Grid, GridItem, H2, H3, NeoInput } from "../../primitives";
 import Button from "../../components/Button/Button";
 import { useFormik } from "formik";
 import Tag from "../../components/Tag";
+import { useRecoilState } from "recoil";
+import { pokemon as pokemonAtom } from "../../atoms/pokemon";
 
 function Test() {
   const [pokemon, setPokemon] = useState({});
   const [xValue, setValue] = useState();
   const [dataFetched, setFetchedData] = useState(false);
 
+  const [test, setTest] = useRecoilState(pokemonAtom);
+
   const { name = "", id = "", weight = "", height = "", types = [] } = pokemon;
-  // console.log("pokemon", pokemon);
 
   useEffect(() => {
     fromApi.getPokemonByNameOrId(1).then((res) => {
@@ -30,9 +33,8 @@ function Test() {
   };
 
   const _searchPokemon = (pokemonNumber) => {
-    console.log(pokemonNumber);
     fromApi
-      .getPokemonByNameOrId(+pokemonNumber)
+      .getPokemonByNameOrId(pokemonNumber)
       .then((res) => {
         setPokemon(res);
       })
@@ -51,64 +53,69 @@ function Test() {
 
   return (
     <Main hideOverflow>
-      <Grid center>
-        <GridItem small="nine-tenths" large="one-third">
-          <Block top={5} bottom={5}>
-            <H2>Pokémon search</H2>
-          </Block>
-          {pokemon && dataFetched && (
-            <Card minHeight="200px">
-              <Flex column align="center" justify="space-between" style={{ height: "100%" }}>
-                <Image width="150px" height="150px" src={pokemon.sprites.front_default} />
-                <div>
-                  <H3>{name}</H3>
-                  <div style={{ position: "absolute", left: "8px", top: "8px" }}>
-                    <p>#{id}</p>
-                  </div>
-                  <Flex>
-                    {types.map((t) => {
-                      const { name } = t.type;
-                      return (
-                        <Block right={2}>
-                          <Tag>{name}</Tag>
-                        </Block>
-                      );
-                    })}
-                  </Flex>
-
-                  <Flex>
-                    <p>
-                      <b>Weight:</b> {weight}
-                    </p>
-                    <Block left={2}>
-                      <p>
-                        <b>Height:</b> {height}
-                      </p>
+      <Container>
+        <Grid center>
+          <GridItem small="nine-tenths" large="one-third">
+            <Block top={5} bottom={5}>
+              <H2>Pokémon search</H2>
+            </Block>
+            {pokemon && dataFetched && (
+              <Card minHeight="200px">
+                <Flex column align="center" justify="space-between" style={{ height: "100%" }}>
+                  <Image width="150px" height="150px" src={pokemon.sprites.front_default} />
+                  <div>
+                    <Block bottom={2}>
+                      <H3>{name}</H3>
                     </Block>
-                  </Flex>
-                </div>
-              </Flex>
-            </Card>
-          )}
-          <Block top={7}>
-            <form onSubmit={formik.handleSubmit}>
-              <Flex justify="space-between">
-                <NeoInput
-                  type="number"
-                  onChange={formik.handleChange}
-                  name="pokemonNumber"
-                  id="pokemonNumber"
-                  value={formik.values.pokemonNumber}
-                />
-                <Button type="submit">Search</Button>
-              </Flex>
-            </form>
-          </Block>
-          <Block top={4}>
-            <p>Wanna see them all in a lazy loading list? check out the pokedex!</p>
-          </Block>
-        </GridItem>
-      </Grid>
+                    <div style={{ position: "absolute", left: "8px", top: "8px" }}>
+                      <p>#{id}</p>
+                    </div>
+                    <Flex>
+                      {types.map((t) => {
+                        const { name } = t.type;
+                        return (
+                          <Block right={2}>
+                            <Tag>{name}</Tag>
+                          </Block>
+                        );
+                      })}
+                    </Flex>
+                    <Block top={2}>
+                      <Flex>
+                        <p>
+                          <b>Weight:</b> {weight}
+                        </p>
+                        <Block left={2}>
+                          <p>
+                            <b>Height:</b> {height}
+                          </p>
+                        </Block>
+                      </Flex>
+                    </Block>
+                  </div>
+                </Flex>
+              </Card>
+            )}
+            <Block top={7}>
+              <form onSubmit={formik.handleSubmit}>
+                <Flex justify="space-between" responsive align="center">
+                  <NeoInput
+                    onChange={formik.handleChange}
+                    name="pokemonNumber"
+                    id="pokemonNumber"
+                    value={formik.values.pokemonNumber}
+                  />
+                  <Block topMobile={4}>
+                    <Button full type="submit">
+                      Search
+                    </Button>
+                  </Block>
+                </Flex>
+              </form>
+            </Block>
+          </GridItem>
+        </Grid>
+      </Container>
     </Main>
   );
 }
