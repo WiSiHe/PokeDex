@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 import Styles from "./styles";
-import FakeLink from "../FakeLink/FakeLink";
-import { useRouter } from "next/router";
 import { Block, Flex } from "../../primitives";
 import Button from "../Button/Button";
 import { animated, useSpring } from "react-spring";
@@ -40,21 +38,21 @@ const GenerationPicker = ({ selectedGeneration, selectGeneration }) => {
   return (
     <>
       <Flex>
-        <Block right={2}>
-          {/* <animated.span style={style}> */}
-          <Button active={selectedGeneration === "1"} onClick={() => _setActiveGeneration("1")}>
-            Gen 1
-          </Button>
-          {/* </animated.span> */}
+        <Block right={1}>
+          <animated.span style={style}>
+            <Button active={selectedGeneration === "1"} onClick={() => _setActiveGeneration("1")}>
+              Gen 1
+            </Button>
+          </animated.span>
         </Block>
-        <Block right={2}>
+        <Block right={1}>
           {/* <animated.span style={style}> */}
           <Button active={selectedGeneration === "2"} onClick={() => selectGeneration("2")}>
             Gen 2
           </Button>
           {/* </animated.span> */}
         </Block>
-        <Block right={2}>
+        <Block right={1}>
           <Button active={selectedGeneration === "3"} onClick={() => selectGeneration("3")}>
             Gen 3
           </Button>

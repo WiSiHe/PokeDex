@@ -12,12 +12,9 @@ Styles.Button = styled.button`
   border-radius: 50px;
   background: #ffffff;
   box-shadow: 20px 20px 60px #d9d9d9, -20px -20px 60px #ffffff;
-
-  // font-family: ${variables.typography.fontFamily};
   font-weight: bold;
-  // font-size: ${variables.fontSize.regular};
-  font-size: 18px;
-  padding: 0 ${variables.spacing[5]};
+  font-size: 14px;
+  padding: 0 ${variables.spacing[4]};
   padding-bottom: 2px; /* To center text vertically */
   letter-spacing: 0.02em;
   text-align: center;
