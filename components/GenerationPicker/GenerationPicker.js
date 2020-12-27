@@ -10,7 +10,7 @@ const GenerationPicker = ({ selectedGeneration, selectGeneration }) => {
   const x = 0;
   const y = 0;
   const rotation = 0;
-  const scale = 1.3;
+  const scale = 0.9;
   const timing = 150;
 
   const [isBooped, setIsBooped] = useState(false);

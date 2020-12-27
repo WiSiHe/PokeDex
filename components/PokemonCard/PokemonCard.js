@@ -16,12 +16,16 @@ const PokemonCard = ({ pokemonName, pokemonUrl }) => {
   const [isBooped, setIsBooped] = useState(false);
 
   useEffect(() => {
-    const fetchPromise = fetch(pokemonUrl);
-    fetchPromise
-      .then((response) => {
-        return response.json();
-      })
-      .then((w) => setPokemonData(w));
+    async function getPokemon() {
+      const resp = await fetch(pokemonUrl);
+      const body = await resp.json();
+      setPokemonData(body);
+    }
+    try {
+      getPokemon();
+    } catch {
+      console.log("no work!");
+    }
   }, [pokemonName, pokemonUrl]);
 
   const x = 0;
@@ -54,10 +58,12 @@ const PokemonCard = ({ pokemonName, pokemonUrl }) => {
     height = "",
     weight = "",
     types = [],
-    sprites: { front_default = "" } = {},
+    sprites: { other = {} } = {},
   } = pokemonData;
 
   if (isEmptyObject(pokemonData)) return null;
+
+  const pokemonImage = other?.["official-artwork"];
 
   return (
     <animated.div style={style}>
@@ -68,7 +74,11 @@ const PokemonCard = ({ pokemonName, pokemonUrl }) => {
           justify="space-between"
           style={{ height: "100%", width: "100%" }}
         >
-          <Image width="150px" height="150px" src={front_default} />
+          <Image
+            width="150px"
+            height="150px"
+            src={pokemonImage?.front_default || "/images/722.png"}
+          />
           <div>
             <Block bottom={4}>
               <H3>{name}</H3>
@@ -86,17 +96,18 @@ const PokemonCard = ({ pokemonName, pokemonUrl }) => {
                 );
               })}
             </Flex>
-
-            <Flex>
-              <p>
-                <b>Weight:</b> {weight}
-              </p>
-              <Block left={2}>
+            <Block top={2}>
+              <Flex>
                 <p>
-                  <b>Height:</b> {height}
+                  <b>Weight:</b> {weight}
                 </p>
-              </Block>
-            </Flex>
+                <Block left={2}>
+                  <p>
+                    <b>Height:</b> {height}
+                  </p>
+                </Block>
+              </Flex>
+            </Block>
           </div>
         </Flex>
       </Card>

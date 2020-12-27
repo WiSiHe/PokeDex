@@ -19,7 +19,14 @@ function Test() {
 
   const [test, setTest] = useRecoilState(pokemonAtom);
 
-  const { name = "", id = "", weight = "", height = "", types = [] } = pokemon;
+  const {
+    name = "",
+    id = "",
+    weight = "",
+    height = "",
+    types = [],
+    sprites: { other = {} } = {},
+  } = pokemon;
 
   useEffect(() => {
     fromApi.getPokemonByNameOrId(1).then((res) => {
@@ -40,6 +47,17 @@ function Test() {
       })
       .catch((err) => alert("no pokemon found"));
   };
+
+  const pokemonImage = other?.["official-artwork"];
+  console.log("pokemonImage", pokemonImage);
+  // useEffect(() => {
+  //   async function getPokemon() {
+  //     const resp = await fetch(pokemonUrl);
+  //     const body = await resp.json();
+  //     setPokemonData(body);
+  //   }
+  //   getPokemon();
+  // }, [pokemonName, pokemonUrl]);
 
   const formik = useFormik({
     initialValues: {
@@ -62,7 +80,11 @@ function Test() {
             {pokemon && dataFetched && (
               <Card minHeight="200px">
                 <Flex column align="center" justify="space-between" style={{ height: "100%" }}>
-                  <Image width="150px" height="150px" src={pokemon.sprites.front_default} />
+                  <Image
+                    width="150px"
+                    height="150px"
+                    src={pokemonImage?.front_default || "/images/722.png"}
+                  />
                   <div>
                     <Block bottom={2}>
                       <H3>{name}</H3>

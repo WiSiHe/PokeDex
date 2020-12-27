@@ -12,11 +12,12 @@ Styles.Wrapper = styled.div`
   height: 60px;
   background-color: white;
   text-transform: uppercase;
+  padding: 0px 16px;
 `;
 
 Styles.Link = styled.div`
   color: black;
-  padding: 16px;
+  padding: 8px;
   border-radius: 5px;
   cursor: pointer;
 
