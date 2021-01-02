@@ -7,7 +7,7 @@ const Card = styled.div`
   border: 1px solid #e9e9e9;
   border-radius: 4px;
   padding: ${variables.spacing[4]};
-  box-shadow: 0px 0px 59px 1px rgba(0, 0, 0, 0.17);
+  box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.05);
   position: relative;
   // @media ${variables.screen.medium} {
   //   padding: ${variables.spacing[7]};
